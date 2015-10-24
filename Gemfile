@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gem "chef", "~> #{ENV.fetch("CHEF_VERSION", "12.0.3")}"
 gem "chefspec", "~> 4.2.0"
 
-gem "berkshelf", "~> 3.2.3"
+gem "berkshelf", "~> 4.0.1"
 gem "foodcritic", "~> 4.0.0"
 gem "license_finder", "~> 1.2.0"
 gem "rake", "~> 10.4.0"
