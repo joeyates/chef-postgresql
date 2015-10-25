@@ -55,7 +55,6 @@ This cookbook requires Chef >= 11.13 due to the use of the `sensitive` attribute
 * `postgresql::contrib` - Additional facilities for PostgreSQL
 * `postgresql::data_directory` - Internal recipe to setup the data directory
 * `postgresql::dbg` - Debug symbols for the server daemon
-* `postgresql::debian_backports` - Internal recipe to manage debian backports
 * `postgresql::doc` - Documentation for the PostgreSQL database management system
 * `postgresql::libpq` - PostgreSQL C client library and header files for libpq5 (PostgreSQL library)
 * `postgresql::postgis` - Geographic objects support for PostgreSQL 9.x _(currently Ubuntu only)_
