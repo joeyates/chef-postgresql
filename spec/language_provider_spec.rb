@@ -1,6 +1,36 @@
 require "spec_helper"
 
 describe "postgresql_language" do
+  describe "create with change of postgresql version" do
+    before do
+      stub_command("pgrep postgres").and_return(false)
+      stub_command("test -f /var/lib/postgresql/9.3/main/PG_VERSION")
+        .and_return(false)
+      allow(Mixlib::ShellOut).to receive_messages(
+        new: double(run_command: nil, exitstatus: 1)
+      )
+    end
+
+    let!(:previous_chef_run) do
+      ChefSpec::SoloRunner.new do |node|
+        node.set["postgresql"]["version"] = "9.3"
+      end.converge("postgresql::server")
+    end
+
+    let(:chef_run) do
+      ChefSpec::SoloRunner.new(step_into: ["postgresql_language"]) do |node|
+        node.set["postgresql"]["version"] = "9.4"
+        node.set["postgresql"]["languages"] = [
+          { name: "plv8", database: "foo-db" }
+        ]
+      end.converge("postgresql::setup_languages")
+    end
+
+    it "uses the desired version" do
+      expect(chef_run).to install_package "postgresql-contrib-9.4"
+    end
+  end
+
   describe "create" do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(step_into: ["postgresql_language"]) do |node|
