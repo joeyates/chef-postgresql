@@ -153,7 +153,7 @@ max_stack_depth = <%= node["postgresql"]["max_stack_depth"] %>      # min 100kB
 max_files_per_process = <%= node["postgresql"]["max_files_per_process"] %>   # min 25
 <%- end %>
           # (change requires restart)
-#shared_preload_libraries = '<%= node["postgresql"]["shared_preload_libraries"] %>'    # (change requires restart)
+shared_preload_libraries = '<%= node["postgresql"]["shared_preload_libraries"] %>'    # (change requires restart)
 
 # - Cost-Based Vacuum Delay -
 
@@ -506,7 +506,7 @@ log_temp_files = <%= node["postgresql"]["log_temp_files"] %>      # log temporar
 #track_activities = <%= node["postgresql"]["track_activities"] %>
 #track_counts = <%= node["postgresql"]["track_counts"] %>
 #track_functions = <%= node["postgresql"]["track_functions"] %>     # none, pl, all
-#track_activity_query_size = <%= node["postgresql"]["track_activity_query_size"] %>   # (change requires restart)
+track_activity_query_size = <%= node["postgresql"]["track_activity_query_size"] %>   # (change requires restart)
 #update_process_title = <%= node["postgresql"]["update_process_title"] %>
 #stats_temp_directory = '<%= node["postgresql"]["stats_temp_directory"] %>'
 
