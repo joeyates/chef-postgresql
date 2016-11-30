@@ -7,7 +7,7 @@
 # Copyright 2012-2013, Phil Cohen
 #
 
-default["postgresql"]["version"]                         = "9.4"
+default["postgresql"]["version"]                         = "9.5"
 
 #----------------------------------------------------------------------------
 # DAEMON CONTROL
@@ -31,10 +31,10 @@ default["postgresql"]["pg_ctl_options"]                  = ""
 default["postgresql"]["pg_hba"]                          = []
 default["postgresql"]["pg_hba_defaults"]                 = true
 default["postgresql"]["pg_ident"]                        = []
-default["postgresql"]["start"]                           = "auto"  # auto, manual, disabled
+default["postgresql"]["start"]                           = "auto" # auto, manual, disabled
 
 default["postgresql"]["conf"]                            = {}
-default["postgresql"]["conf_custom"]                     = false  # if true, only use node["postgresql"]["conf"]
+default["postgresql"]["conf_custom"]                     = false # if true, only use node["postgresql"]["conf"]
 default["postgresql"]["initdb_options"]                  = "--locale=en_US.UTF-8"
 
 #------------------------------------------------------------------------------
@@ -135,7 +135,9 @@ default["postgresql"]["commit_delay"]                    = 0
 default["postgresql"]["commit_siblings"]                 = 5
 
 # checkpoints
-default["postgresql"]["checkpoint_segments"]             = 3
+if Gem::Version.new(node["postgresql"]["version"]) < Gem::Version.new("9.5")
+  default["postgresql"]["checkpoint_segments"] = 3
+end
 default["postgresql"]["checkpoint_timeout"]              = "5min"
 default["postgresql"]["checkpoint_completion_target"]    = 0.5
 default["postgresql"]["checkpoint_warning"]              = "30s"

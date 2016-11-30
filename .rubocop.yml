@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - ".bundle/**/*"
     - "vendor/**/*"
+    - "Guardfile"
 
 LineLength:
   Max: 80
@@ -19,7 +20,7 @@ PercentLiteralDelimiters:
   PreferredDelimiters:
     "%w": "[]"  # Arrays use brackets
 
-SingleSpaceBeforeFirstArg:
+SpaceBeforeFirstArg:
   Enabled: false  # too strict about metadata and certain formatting
 
 inherit_from: test/rubocop/enabled.yml
