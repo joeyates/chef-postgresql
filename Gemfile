@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "chef", "~> #{ENV.fetch("CHEF_VERSION", "12.5")}"
+gem "chef", "~> #{ENV.fetch("CHEF_VERSION", "13.8")}"
 gem "chefspec", "~> 4.5"
 
 gem "berkshelf", "~> 4.0"

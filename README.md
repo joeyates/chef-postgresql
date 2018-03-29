@@ -24,8 +24,9 @@ Currently supported versions:
 * `9.3`
 * `9.4`
 * `9.5`
+* `9.6`
 
-The default version is `9.5`.
+The default version is `9.6`.
 
 ## Requirements
 
@@ -37,10 +38,11 @@ The following platforms are supported by this cookbook, meaning that the recipes
 * Debian 8.2
 * Ubuntu 12.04
 * Ubuntu 14.04
+* Ubuntu 16.04
 
 ### Chef
 
-This cookbook requires Chef >= 11.13 due to the use of the `sensitive` attribute for some resources.
+This cookbook requires Chef >= 13 as it has been adapted to the new LWRPs.
 
 ### Cookbooks
 
